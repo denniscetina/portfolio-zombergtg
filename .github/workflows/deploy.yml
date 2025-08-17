@@ -29,7 +29,7 @@ jobs:
         run: npm run build
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v2  # Esta es la versión más reciente
+        uses: actions/upload-pages-artifact@v3  # Esta es la versión más reciente
 
   deploy:
     needs: build
