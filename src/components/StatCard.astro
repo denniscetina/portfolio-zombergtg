@@ -1,0 +1,17 @@
+---
+interface Props {
+    number: string;
+    description: string;
+    icon: any;
+}
+
+const { number, description, icon: Icon } = Astro.props;
+---
+
+<div class="flex flex-col items-center justify-center text-center md:items-start md:text-start gap-3 flex-1">
+    <div class="icon">
+        <Icon />
+    </div>
+    <div class="heading text-slate-200 text-[1.5rem] md:text-4xl">{number}</div>
+    <p class="content text-neutral-400 text-base md:text-lg">{description}</p>
+</div>

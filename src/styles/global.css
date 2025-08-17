@@ -1,0 +1,650 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+:root{
+    --green-dy: #357856;
+}
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Tipografía global */
+body {
+    position: relative;
+    font-family: "JetBrains Mono", monospace;
+    background-color: #1C1C1C;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Encabezados */
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Enlaces */
+a {
+    color: #FAFAFAFA;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #98dbb9;
+}
+
+p{
+    margin: 0;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.top-header:before{
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(1px);
+    background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgb(0, 255, 111) 75%);
+    border-radius: inherit;
+}
+
+/* Imagen de perfil */
+.profile img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+
+/* Íconos */
+.technology-icons .icon svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 0.5rem;
+}
+
+/*Components*/
+
+/* Effects in body */
+
+/* Contenedor de las estrellas (fijo, sin afectar el scroll) */
+.stars-container {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Las estrellas no salen de aquí */
+    pointer-events: none; /* Permite hacer clic en el contenido detrás */
+    z-index: -1; /* Detrás del contenido */
+}
+
+/* Ajusta las estrellas para que estén dentro del contenedor */
+#stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+}
+
+/*#stars, #stars2, #stars3 {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    height: 100vh; !* Limita al viewport *!*/
+/*    overflow: hidden; !* Evita desbordamiento *!*/
+/*    background: transparent;*/
+/*}*/
+
+#stars {
+    width: 1px;
+    height: 1px;
+    box-shadow:
+            123px 456px #fff, 789px 321px #fff, 456px 654px #fff, 234px 1234px #fff,
+            912px 700px #fff, 1344px 1456px #fff, 500px 1900px #fff;
+    animation: animStar 50s linear infinite;
+}
+
+#stars:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    box-shadow: inherit;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    box-shadow:
+            231px 789px #fff, 1050px 1200px #fff, 700px 300px #fff, 350px 1900px #fff,
+            650px 150px #fff, 1600px 450px #fff, 300px 1000px #fff;
+    animation: animStar 100s linear infinite;
+}
+
+#stars2:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    box-shadow: inherit;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    box-shadow:
+            500px 700px #fff, 800px 1400px #fff, 900px 400px #fff, 200px 1000px #fff,
+            1200px 300px #fff, 100px 1800px #fff, 650px 900px #fff;
+    animation: animStar 150s linear infinite;
+}
+
+#stars3:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    box-shadow: inherit;
+}
+
+#title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    letter-spacing: 10px;
+    margin-top: -60px;
+    color: white;
+    padding-left: 10px;
+}
+
+#title span {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+.cursor {
+    animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* Styles personalized*/
+
+.bg-black{
+    background-color: #111111  !important;
+}
+
+
+
+.box:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate3d(0px, 1px, 0);
+    filter: blur(1px);
+    background: linear-gradient(90deg,rgb(0, 111, 67) 0%, rgba(255, 255, 255, 0) 75%);
+    border-radius: inherit;
+}
+
+.presentation{
+    color: #FAFAFA;
+}
+
+.presentation .text-green{
+    color: #347754;
+}
+
+.peach-text{
+    color: #d57975;
+}
+
+.profile {
+    position: relative;
+    /*margin: 5rem auto;*/
+}
+
+/*.icon-code{*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+/*    left: 440px;*/
+/*}*/
+
+.hero{
+    border-radius: 12px;
+}
+
+.hero:before{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(1px);
+    background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgb(0, 255, 111) 75%);
+    border-radius: inherit;
+}
+
+/* Section Cooperation and Git journaling */
+
+.services{
+    border-radius: 12px;
+    border: 1px solid #21262e;
+    z-index: 1;
+}
+
+.card-offer h3 {
+    color: var(--color-neutral-100);
+    margin-bottom: 0.25rem;
+}
+
+.offer{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 50px;
+}
+
+.offer h2 span{
+    color: var(--color-slate-400);
+}
+
+.offer h2{
+    color: var(--color-neutral-100);
+}
+
+.offer p{
+    color: var(--green-dy);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .offer{
+        width: 60%;
+    }
+}
+
+.services, .skills, .education{
+    position: relative;
+    z-index: 2;
+}
+
+.services:before, .skills:before, .education:before{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    width: 500px;
+    height: 272px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.2;
+    background-image: linear-gradient(#21262e 1px, transparent 1px), linear-gradient(to right, #21262e 1px, transparent 1px);
+    background-size: 20px 18px;
+    border-radius: 0 12px 0 0;
+}
+
+.reach-out{
+    margin: 38px auto 0 auto;
+    text-align: center;
+
+}
+
+.reach-out .cta{
+    color: var(--green-dy);
+}
+
+.experience{
+    position: relative;
+    border-radius: 12px;
+}
+
+.experience:before{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(1px);
+    background: linear-gradient(270deg,rgba(255, 255, 255, 0) 4%, rgb(0, 255, 111) 75%);
+    border-radius: inherit;
+}
+
+.experience .heading{
+    color: var(--green-dy);
+}
+
+.experience .years{
+    color: var(--color-neutral-200);
+}
+
+.experience .years span{
+    color: var(--color-slate-400);
+}
+
+.companies .card-heading h3{
+    color: var(--color-neutral-200);
+    margin-bottom: 0.5rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 1px;
+    height: 100%;
+    opacity: 0.2;
+    background: var(--color-neutral-300);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -13px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    background: var(--color-neutral-300);
+    border-radius: 50%;
+}
+
+.timeline-item:last-child::before {
+    background: var(--color-neutral-500); /* Cambia el color del punto */
+}
+
+.timeline-date {
+    color: var(--color-neutral-400);
+    font-size: 16px;
+    min-width: 116px;
+    padding-right: 0;
+}
+
+.timeline-heading .title {
+    color: var(--green-dy);
+    font-size: 16px;
+    margin: 0;
+}
+
+.timeline-content p {
+    font-size: 16px;
+    color: var(--color-neutral-300);
+    margin: 5px 0 0;
+    margin-left: auto;
+    width: 70%;
+}
+
+
+/* Project */
+.recent-work{
+    position: relative;
+    border-radius: 12px;
+}
+
+.recent-work:before{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(1px);
+    background: linear-gradient(270deg,rgba(255, 255, 255, 0) 4%, rgb(0, 255, 111) 75%);
+    border-radius: inherit;
+}
+
+.project .heading{
+    color: var(--green-dy);
+}
+
+.project h2{
+    color: var(--color-neutral-200);
+}
+
+.project-content h3{
+    color: var(--green-dy);
+}
+
+.project-content .project-info a{
+    color: var(--green-dy);
+    text-decoration: underline;
+}
+
+.project-content .project-info a:hover{
+    color: var(--color-neutral-200);
+    opacity: 1;
+    text-decoration: none;
+}
+
+.project-content .peach-text{
+    color: #d57975;
+}
+
+
+/*Skills*/
+.skills .heading .title{
+    margin: 0;
+    color: var(--color-neutral-200);
+}
+
+.skills .heading .subtitle{
+    color: var(--green-dy);
+}
+
+.skills .technologies{
+    background-color: #0c0c0c;
+}
+
+.technologies .item {
+    min-width: inherit;
+}
+
+@media (min-width: 768px) {
+    .technologies .item {
+        min-width: 100px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.skill-description {
+    position: relative;
+    padding-left: 20px;
+}
+
+.skill-description h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.skill-description-item {
+    position: relative;
+    margin-bottom: 24px;
+    display: flex;
+}
+
+.skill-description-item::before {
+    content: "";
+    position: absolute;
+    left: -23px;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    background: var(--color-neutral-300);
+    border-radius: 50%;
+}
+
+.skill-description-item .heading .title {
+    color: var(--color-slate-700);
+    font-size: 16px;
+    min-width: 116px;
+    padding-right: 0;
+}
+
+.skill-description-item .heading .description {
+    color: var(--color-neutral-400);
+    font-size: 16px;
+    margin: 0;
+}
+
+.skill-description-item:last-child{
+    margin: 0;
+}
+
+footer{
+    background-color: #1C1C1C;
+}
+
+footer a{
+    color: var(--color-neutral-400) !important;
+}
+
+/* Estilos base para el menú */
+.menu-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #111111;
+    color: white;
+    padding: 2rem 1.5rem;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+
+    /* Empieza oculto a la izquierda */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 9999;
+}
+
+/* Cuando tenga esta clase, se muestra */
+.menu-slide.active {
+    transform: translateX(0);
+}
+
+/* Opcional: estilos para links */
+.menu-slide a {
+    display: block;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1rem;
+
+}
+
+.menu-slide a:hover {
+    color: var(--green-dy); /* verde cool */
+}
+
+/* Fondo oscuro que tapa todo (overlay) */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9998;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}

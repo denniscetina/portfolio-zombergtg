@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+    heading: string;
+    description: string;
+    image: ImageMetadata;
+}
+
+const { heading, description, image } = Astro.props;
+---
+
+<div class="flex items-center gap-3 flex-1 w-auto border-1 border-[#21262e] rounded-lg p-3">
+    <Image src={image} alt={heading} width={80} height={80} quality={100} />
+    <div class="card-heading">
+        <h3 class="mb-1">{heading}</h3>
+        <p class="text-neutral-400">
+            {description}
+        </p>
+    </div>
+</div>

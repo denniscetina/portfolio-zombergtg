@@ -1,0 +1,325 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from '../layouts/MainLayout.astro';
+import { experience } from '../data/experience';
+import { education } from '../data/education';
+import { skills } from '../data/skills';
+import { hero } from '../data/hero';
+import { highlights } from '../data/highlights';
+import { offer } from '../data/offer';
+import { recentWork } from '../data/recent-work';
+
+import StatCard from "../components/StatCard.astro";
+import OfferCard from "../components/OfferCard.astro";
+import CompaniesCard from "../components/CompaniesCard.astro";
+import SvgIcon from '../components/SvgIcon.astro';
+import { icons } from "../icons";
+import {images} from "../images";
+---
+
+<MainLayout>
+	<section class="w-full z-2 mb-[50px] md:mt-[50px]">
+		<div id="aboutMe" class="hero flex bg-black py-[54px] relative">
+			<div class="container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+				<div class="flex items-stretch flex-wrap flex-col-reverse md:flex-row">
+					<div class="w-full md:w-1/2 px-[10px]">
+						<div class="profile flex justify-center flex-1 mt-5 md:mb-0 md:mt-0">
+							<Image src={images.Profile} alt="Dennis Yam" quality={90}  loading="eager"/>
+						</div>
+					</div>
+					<div class="w-full md:w-1/2 px-[10px]">
+						<div class="presentation h-full flex flex-col justify-center gap-3">
+							<p class="text-base md:text-lg text-white !text-center md:!text-start"><span class="peach-text">&lt;span&gt;</span> {hero.introduction} <span class="peach-text">&lt;span&gt;</span></p>
+							<h1 class="text-white !text-center md:!text-start">{hero.position.titleStart} <span class="text-green">&#123;{hero.position.titleHighlight}&#125;</span> {hero.position.titleEnd}<span class="cursor">_</span></h1>
+							<p class="text-base md:text-lg text-neutral-400 !text-center md:!text-start"><span class="peach-text">&lt;p&gt;</span> {hero.descriptionHero.descriptionStart}  <span class="peach-text">{hero.descriptionHero.skillOne},</span> <span class="peach-text">{hero.descriptionHero.skillTwo},</span> <span class="peach-text">{hero.descriptionHero.skillThree}</span> y <span class="peach-text">{hero.descriptionHero.skillFour}</span>{hero.descriptionHero.descriptionEnd} <span class="peach-text">&lt;p&gt;</span></p>
+							<div class="technology-icons justify-center md:justify-start flex items-baseline gap-[5px] text-neutral-400">
+								<SvgIcon iconKey="LaravelIcon" width={34} height={34}/>
+								<SvgIcon iconKey="WordpressIcon" width={34} height={34}/>
+								<SvgIcon iconKey="JavascriptIcon" width={34} height={34}/>
+								<SvgIcon iconKey="FigmaIcon" width={34} height={34}/>
+								<p class="text-base md:text-lg">{hero.descriptionHero.more}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full z-2 mb-[50px] mt-[50px]">
+		<div class="highlights bg-black md:py-[54px] py-[30px]">
+				<div class="container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+					<div class="grid grid-cols-2 items-center md:items-start md:grid-cols-4 gap-3">
+						<StatCard
+							icon={icons.CalendarIcon}
+							number={highlights.content.experience.number}
+							description={highlights.content.experience.description}
+						/>
+						<StatCard
+							icon={icons.DesktopIcon}
+							number={highlights.content.projects.number}
+							description={highlights.content.projects.description}
+						/>
+						<StatCard
+							icon={icons.SmileIcon}
+							number={highlights.content.git.number}
+							description={highlights.content.git.description}
+						/>
+						<StatCard
+							icon={icons.RewardIcon}
+							number={highlights.content.awards.number}
+							description={highlights.content.awards.description}
+						/>
+					</div>
+				</div>
+			</div>
+	</section>
+	<section class="w-full z-2 mb-[50px] mt-[50px]">
+		<div id="services" class="services bg-black py-[40px]">
+			<div class="container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+				<div class="offer">
+					<p class="text-lg mb-2">{offer.introduction}</p>
+					<h2>{offer.title.titleStart} <span>{offer.title.titleHighlight}</span></h2>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex-wrap gap-5">
+					<OfferCard
+						icon={icons.DesktopCodeIcon}
+						heading={offer.cardsOffer.web.heading}
+						description={offer.cardsOffer.web.paragraph}
+					/>
+					<OfferCard
+						icon={icons.DataBaseIcon}
+						heading={offer.cardsOffer.database.heading}
+						description={offer.cardsOffer.database.paragraph}
+					/>
+					<OfferCard
+						icon={icons.ApiIcon}
+						heading={offer.cardsOffer.api.heading}
+						description={offer.cardsOffer.api.paragraph}
+					/>
+					<OfferCard
+						icon={icons.PerformanceIcon}
+						heading={offer.cardsOffer.performance.heading}
+						description={offer.cardsOffer.performance.paragraph}
+					/>
+					<OfferCard
+						icon={icons.EcommerceIcon}
+						heading={offer.cardsOffer.ecommerce.heading}
+						description={offer.cardsOffer.ecommerce.paragraph}
+					/>
+				</div>
+				<div class="reach-out md:w-[100%] lg:w-[38%]">
+					<p class="text-neutral-400">{offer.cta.paragraph} <a href="mailto:dennisadairyamcetina@gmail.com" class="cta block md:inline">{offer.cta.reachOut}</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full z-2 mb-[50px] mt-[50px]">
+		<div class="experience bg-black py-[40px]">
+			<div class="container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+				<div class="flex flex-col md:flex-row flex-stretch gap-[2rem] md:gap-4rem">
+					<div class="w-full md:w-1/2">
+						<div class="h-full flex items-end">
+							<div class="techniques-experience">
+								<div class="heading mb-5">
+									<div class="flex items-center relative mb-4">
+                                        <span class="w-[8px] h-[8px]  bg-[#357856] rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+										<p class="!ml-4 heading text-xl">{experience.introduction}</p>
+									</div>
+									<h2 class="years">{experience.title.titleStart} <span>{experience.title.titleHighlight}</span></h2>
+								</div>
+								<div class="companies">
+									<div class="flex flex-col gap-3">
+										<CompaniesCard
+											image={images.MarkeaAgency}
+											heading={experience.cardsExperience.markeaAgency.heading}
+											description={experience.cardsExperience.markeaAgency.date}
+										/>
+                                        <CompaniesCard
+                                                image={images.UaQroo}
+                                                heading={experience.cardsExperience.uaqroo.heading}
+                                                description={experience.cardsExperience.uaqroo.date}
+                                        />
+										<CompaniesCard
+											image={images.PuntoSinular}
+											heading={experience.cardsExperience.freelance.heading}
+											description={experience.cardsExperience.freelance.date}
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full md:w-1/2">
+						<div class="h-full flex items-end">
+							<div class="primary-skill flex flex-col gap-3">
+								<p class="heading text-2xl">{experience.descriptionExperience.position}</p>
+								<ul class="space-y-4 text-neutral-200 text-lg leading-relaxed p-0">
+                                    <li class="flex items-center relative">
+                                        <span class="w-[8px] h-[8px] bg-neutral-200 rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                                        <span class="ml-6 text-base">{experience.descriptionExperience.bulletOne}</span>
+                                    </li>
+                                    <li class="flex items-center relative">
+                                        <span class="w-[8px] h-[8px] bg-neutral-200 rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                                        <span class="ml-6 text-base">{experience.descriptionExperience.bulletTwo}</span>
+									</li>
+                                    <li class="flex items-center relative">
+                                        <span class="w-[8px] h-[8px] bg-neutral-200 rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                                        <span class="ml-6 text-base">{experience.descriptionExperience.bulletThree}</span>
+                                    </li>
+								</ul>
+								<div class="badge-skills flex gap-3 flex-wrap">
+									<div class="border-1 border-[#21262e] rounded-xl p-2">
+										<span class="text-neutral-200">{experience.badgeTechnologies.laravel}</span>
+									</div>
+									<div class="border-1 border-[#21262e] rounded-xl p-2">
+										<span class="text-neutral-200">{experience.badgeTechnologies.astro}</span>
+									</div>
+									<div class="border-1 border-[#21262e] rounded-xl p-2">
+										<span class="text-neutral-200">{experience.badgeTechnologies.codeigniter}</span>
+									</div>
+									<div class="border-1 border-[#21262e] rounded-xl p-2">
+										<span class="text-neutral-200">{experience.badgeTechnologies.wordpress}</span>
+									</div>
+									<div class="border-1 border-[#21262e] rounded-xl p-2">
+										<span class="text-neutral-200">{experience.badgeTechnologies.hubspot}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full z-2 mb-[50px] mt-[50px]">
+		<div class="education py-[40px] flex flex-wrap justify-center gap-4 lg:gap-0 bg-black border-1 border-[#21262e] rounded-xl p-4">
+			<div class="w-full container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+                <div class="heading flex flex-col gap-2 mb-4">
+                    <div class="flex items-center relative mb-4">
+                        <span class="w-[8px] h-[8px]  bg-[#357856] rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                        <p class="!ml-4 heading text-xl text-[#357856]">{education.introduction}</p>
+                    </div>
+                    <h2 class="text-xl text-neutral-200">{education.title}</h2>
+                </div>
+                <div class="timeline">
+                    {education.data.map(({ period, institution, description }) => (
+                            <div class="timeline-item flex flex-col">
+                                <div class="timeline-heading">
+                                    <p class="timeline-date">{period}: <span class="title">{institution}</span></p>
+                                </div>
+                                <div class="timeline-content">
+                                    <p>{description}</p>
+                                </div>
+                            </div>
+                    ))}
+                </div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full z-2 mb-[50px] mt-[50px]">
+		<div id="projects" class="recent-work bg-black py-[40px] ">
+			<div class="container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+				<div class="flex flex-col md:flex-row items-stretch gap-[2rem] md:gap-4rem">
+					<div class="w-full md:w-1/2">
+						<div class="project flex flex-col items-start h-full">
+                            <div class="flex items-center relative mb-4">
+                                <span class="w-[8px] h-[8px]  bg-[#357856] rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                                <p class="!ml-4 heading text-xl">{recentWork.introduction}</p>
+                            </div>
+							<h2 class="mb-5">{recentWork.title}</h2>
+							<Image class=" rounded-[12px]" src={images.RecentWork} alt="Project Kea Relators" />
+						</div>
+					</div>
+					<div class="w-full md:w-1/2 flex items-end">
+						<div class="project-content">
+							<h3>{recentWork.description.headingProject}</h3>
+							<p class="mb-4 text-neutral-400">{recentWork.description.paragraph}</p>
+							<div class="project-info text-neutral-200 mt-5">
+								<p class="peach-text !mb-4">{recentWork.description.titleProject}</p>
+								<div class="flex flex-col gap-4">
+									<div class="client flex justify-between border-b-1 border-neutral-600">
+										<p>{recentWork.description.projectInfo.titleClient}</p>
+										<p>{recentWork.description.projectInfo.client}</p>
+									</div>
+									<div class="client flex justify-between border-b-1 border-neutral-600">
+										<p>{recentWork.description.projectInfo.titleDate}</p>
+										<p>{recentWork.description.projectInfo.date}</p>
+									</div>
+									<div class="client flex justify-between border-b-1 border-neutral-600">
+										<p>{recentWork.description.projectInfo.titleTechnologies}</p>
+										<p>{recentWork.description.projectInfo.technology}</p>
+									</div>
+								</div>
+                                <div class="text-neutral-200 mt-5">
+                                    <a href="https://kearealtors.com/" target="_blank">Ver proyecto</a>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full z-2 mt-[50px]">
+		<div class="skills bg-black py-[40px]">
+			<div class="container md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
+				<div class="heading mb-5">
+                    <div class="flex items-center relative mb-4">
+                        <span class="w-[8px] h-[8px]  bg-[#357856] rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                        <p class="subtitle !ml-4 heading text-xl">{skills.introduction}</p>
+                    </div>
+					<h2 class="title">{skills.title}</h2>
+				</div>
+				<div class="flex items-center flex-wrap gap-5 md:gap-0 flex-col-reverse md:flex-row">
+					<div class="w-full md:w-1/2">
+						<div class="technologies border-1 border-[#21262e] rounded-xl p-4">
+							<div class="flex items-center justify-center md:justify-start flex-wrap gap-4">
+								<div class="item w-fit">
+									<SvgIcon iconKey="LaravelIcon"/>
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="AstroIcon"/>
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="WordpressIcon"/>
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="JavascriptIcon"/>
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="FigmaIcon"/>
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="MysqlIcon"/>
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="HtmlIcon" />
+								</div>
+								<div class="item w-fit">
+									<SvgIcon iconKey="CssIcon"/>
+								</div>
+                                <div class="item w-fit">
+                                    <SvgIcon iconKey="AndroidStudioIcon"/>
+                                </div>
+							</div>
+
+						</div>
+					</div>
+					<div class="w-full md:w-1/2">
+						<div class="flex justify-content-center items-center h-full md:px-3">
+							<div class="skill-description border-1 border-[#21262e]">
+								{skills.data.map(({ skill, description }) => (
+								<div class="skill-description-item flex flex-col">
+									<div class="heading">
+										<p class="title">{skill}: <span class="description">{description}</span></p>
+									</div>
+								</div>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</MainLayout>

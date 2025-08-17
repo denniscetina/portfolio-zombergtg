@@ -1,0 +1,23 @@
+---
+import { icons } from '../icons';
+
+interface Props {
+    iconKey: string;
+    width?: number;
+    height?: number;
+    class?: string;
+}
+
+const { iconKey, width, height, class: className = '' } = Astro.props;
+const IconComponent = icons[iconKey] ?? null;
+
+const props: Record<string, any> = { class: className };
+if (width) props.width = width;
+if (height) props.height = height;
+---
+
+{IconComponent ? (
+<IconComponent {...props} />
+    ) : (
+<p>SVG icon not found: {iconKey}</p>
+    )}
